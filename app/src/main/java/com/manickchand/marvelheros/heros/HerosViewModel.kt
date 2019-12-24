@@ -17,8 +17,8 @@ import retrofit2.Response
 class HerosViewModel:ViewModel() {
     val herosLiveData: MutableLiveData<List<Hero>> = MutableLiveData()
 
-    fun getHeros(){
-        RetrofitInit.service.getAllEvents(CHARACTER_LIMIT, ts, API_PUBLIC_KEY, getHash(ts.toString())).enqueue(object: Callback<CharacterReturn>{
+    fun getHeros(offset:Int){
+        RetrofitInit.service.getAllEvents(CHARACTER_LIMIT, offset, ts, API_PUBLIC_KEY, getHash(ts.toString())).enqueue(object: Callback<CharacterReturn>{
 
             override fun onFailure(call: Call<CharacterReturn>, t: Throwable) {
                Log.i(TAG_DEBUC,"Error Retrofit: "+t.message)
@@ -32,7 +32,7 @@ class HerosViewModel:ViewModel() {
 
                 herosLiveData.value = heros
                 //todo verificar status da requisicao
-                Log.i(TAG_DEBUC,"success :"+ heros.get(0).name)
+
             }
 
         })
