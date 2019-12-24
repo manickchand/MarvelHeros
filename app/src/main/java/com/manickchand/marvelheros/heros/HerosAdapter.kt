@@ -1,6 +1,7 @@
 package com.manickchand.marvelheros.heros
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.manickchand.marvelheros.R
 import com.manickchand.marvelheros.data.model.hero.Hero
+import com.manickchand.marvelheros.data.util.TAG_DEBUC
+import com.manickchand.marvelheros.data.util.getUrlImage
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_heros.view.*
 
 class HerosAdapter(context: Context,
@@ -30,18 +34,23 @@ class HerosAdapter(context: Context,
     // seta dados de cada linha
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
-        //tenta carregar img
-//        try {
-//            Picasso.get().load(mList.get(position).image)
-//                .placeholder(R.drawable.placeholder)
-//                .error(R.drawable.placeholder)
-//                .into(holder.ivEvent)
-//        }catch (e:Exception){
-//            e.stackTrace
-//        }
-//        holder.tvTitle.text = mList.get(position).title
 
-        //setAnimation(holder.itemView, position)
+        val urlImg = getUrlImage(mList.get(position).thumbnail.path, mList.get(position).thumbnail.extension)
+
+        Log.i(TAG_DEBUC,"URL IMAGE : "+urlImg)
+
+        //tenta carregar img
+        try {
+            Picasso.get().load(urlImg)
+                .placeholder(R.drawable.placeholder)
+                .error(R.drawable.placeholder)
+                .into(holder.ivHero)
+        }catch (e:Exception){
+            e.stackTrace
+        }
+        holder.tvTitle.text = mList.get(position).name
+
+        setAnimation(holder.itemView, position)
     }
 
     private fun setAnimation(viewToAnimate: View, position: Int) {

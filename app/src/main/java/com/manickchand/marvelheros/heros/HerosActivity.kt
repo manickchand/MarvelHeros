@@ -2,7 +2,6 @@ package com.manickchand.marvelheros.heros
 
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -17,11 +16,10 @@ class HerosActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_heros)
 
-        var viewModel =  ViewModelProviders.of(this).get(HerosViewModel::class.java)
+        val viewModel =  ViewModelProviders.of(this).get(HerosViewModel::class.java)
 
         viewModel.herosLiveData.observe(this, Observer {
             it?.let { heros ->
-                Log.i("Tag",heros.get(0).name)
                 with(rv_heros){
                     layoutManager = LinearLayoutManager(this@HerosActivity, RecyclerView.VERTICAL,false)
                     setHasFixedSize(true)

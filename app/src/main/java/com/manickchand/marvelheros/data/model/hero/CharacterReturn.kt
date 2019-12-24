@@ -33,7 +33,7 @@ data class Thumbnail (
 data class Comics (
     var available:Int,
     var collectionURI:String,
-    var items:List<ItemStories>,//todo varificar
+    var items:List<ItemComics>,
     var returned:Int
 ):Parcelable
 
@@ -89,6 +89,7 @@ data class ItemEvents (
     var name:String
 ):Parcelable
 
+//------------------------------------------------------
 @Parcelize
 data class ItemUrls (
     var type:String,

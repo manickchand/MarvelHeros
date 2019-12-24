@@ -5,7 +5,6 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Hero  (
-
     var id:Int,
     var name:String,
     var description:String,
