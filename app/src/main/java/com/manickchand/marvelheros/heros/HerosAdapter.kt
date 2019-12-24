@@ -16,36 +16,22 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_heros.view.*
 
 class HerosAdapter(context: Context,
-                   list: List<Hero>) : RecyclerView.Adapter<HerosAdapter.MyViewHolder?>() {
+                   list: List<Hero>,
+                    val onItemClickListener:((hero:Hero) -> Unit) ) : RecyclerView.Adapter<HerosAdapter.MyViewHolder?>() {
 
-    var mContext =context
-    var mList = list
-    var mlayoutInflater: LayoutInflater = mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater //
-    //var mReciclerViewOnClickListenerHack: RecyclerViewOnClickListenerHack? = null // interface de click
-    lateinit var view: View
+    private var mContext =context
+    private var mList = list
+    private var mlayoutInflater: LayoutInflater = mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater //
+    private lateinit var mView: View
     private var lastPosition = -1
 
-    //infla view da linha
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        view = mlayoutInflater.inflate(R.layout.item_heros,parent,false)
-        return MyViewHolder(view)
+        mView = mlayoutInflater.inflate(R.layout.item_heros,parent,false)
+        return MyViewHolder(mView,onItemClickListener)
     }
 
-    // seta dados de cada linha
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-
-        val urlImg = getUrlImage(mList.get(position).thumbnail.path, mList.get(position).thumbnail.extension)
-
-        //tenta carregar img
-        try {
-            Picasso.get().load(urlImg)
-                .placeholder(R.drawable.placeholder)
-                .error(R.drawable.placeholder)
-                .into(holder.ivHero)
-        }catch (e:Exception){
-            e.stackTrace
-        }
-        holder.tvTitle.text = mList.get(position).name
+        holder.bindHero(mList[position])
         setAnimation(holder.itemView, position)
     }
 
@@ -60,26 +46,30 @@ class HerosAdapter(context: Context,
 
     override fun getItemCount() = mList.count()
 
-//    fun setReciclerViewOnClickListenerHack(r: RecyclerViewOnClickListenerHack) {
-//        this.mReciclerViewOnClickListenerHack = r
-//    }
+    inner class MyViewHolder(itemView:View,
+                             private val onItemClickListener: ((hero: Hero) -> Unit)) :RecyclerView.ViewHolder(itemView){
 
-    inner class MyViewHolder(itemView:View):RecyclerView.ViewHolder(itemView){
+        private var ivHero: ImageView = itemView.iv_hero
+        private var tvTitle: TextView = itemView.tv_hero_name
 
-        val ivHero: ImageView
-        var tvTitle: TextView
+        fun bindHero(hero: Hero) {
 
-        init {
-            //itemView.setOnClickListener(this)
-            ivHero = itemView.iv_hero
-            tvTitle = itemView.tv_hero_name
+            val urlImg = getUrlImage(hero.thumbnail.path, hero.thumbnail.extension)
+
+            try {
+                Picasso.get().load(urlImg)
+                    .placeholder(R.drawable.placeholder)
+                    .error(R.drawable.placeholder)
+                    .into(ivHero)
+            }catch (e:Exception){
+                e.stackTrace
+            }
+            tvTitle.text = hero.name
+
+            itemView.setOnClickListener{
+                onItemClickListener.invoke(hero)
+            }
         }
 
-         //clickListener de cada posicao do adapter
-//        override fun onClick(v: View?) {
-//            if (mReciclerViewOnClickListenerHack != null) {
-//                mReciclerViewOnClickListenerHack!!.onClickListener(v!!, adapterPosition)
-//            }
-//        }
     }
 }

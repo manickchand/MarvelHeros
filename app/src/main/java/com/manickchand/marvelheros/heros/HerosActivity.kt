@@ -2,7 +2,7 @@ package com.manickchand.marvelheros.heros
 
 
 import android.os.Bundle
-import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.manickchand.marvelheros.R
 import com.manickchand.marvelheros.data.model.hero.Hero
 import com.manickchand.marvelheros.data.util.CHARACTER_LIMIT
-import com.manickchand.marvelheros.data.util.TAG_DEBUC
 import kotlinx.android.synthetic.main.activity_heros.*
 
 class HerosActivity : AppCompatActivity() {
@@ -20,7 +19,7 @@ class HerosActivity : AppCompatActivity() {
     private var loading = false
     var pastVisiblesItems = 0
     var totalItemCount:Int = 0
-    var mList:MutableList<Hero> = ArrayList()
+    private var mList:MutableList<Hero> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,7 +55,9 @@ class HerosActivity : AppCompatActivity() {
                 }
             })
 
-            adapter = HerosAdapter(this@HerosActivity,mList)
+            adapter = HerosAdapter(this@HerosActivity, mList){ hero ->
+                Toast.makeText(this@HerosActivity,"Clicou", Toast.LENGTH_SHORT).show()
+            }
 
         }
 
