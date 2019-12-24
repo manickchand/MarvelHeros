@@ -21,10 +21,9 @@ class HerosActivity : AppCompatActivity() {
 
         viewModel.herosLiveData.observe(this, Observer {
             it?.let { heros ->
-                Log.i("Tag",heros.get(0))
+                Log.i("Tag",heros.get(0).name)
                 with(rv_heros){
-                    val llm = LinearLayoutManager(this@HerosActivity, RecyclerView.VERTICAL,false)
-                    llm.orientation = LinearLayoutManager.VERTICAL
+                    layoutManager = LinearLayoutManager(this@HerosActivity, RecyclerView.VERTICAL,false)
                     setHasFixedSize(true)
                     adapter = HerosAdapter(this@HerosActivity,heros)
                 }

@@ -11,10 +11,10 @@ object RetrofitInit {
 
     private fun initRetrofit(): Retrofit {
 
+        // loggin da requisicao
         val interceptor = HttpLoggingInterceptor()
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
-        val client =
-            OkHttpClient.Builder().addInterceptor(interceptor).build()
+        val client = OkHttpClient.Builder().addInterceptor(interceptor).build()
 
         return Retrofit.Builder()
             .baseUrl(BASE_URL)

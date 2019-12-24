@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.manickchand.marvelheros.R
@@ -11,7 +12,7 @@ import com.manickchand.marvelheros.data.model.hero.Hero
 import kotlinx.android.synthetic.main.item_heros.view.*
 
 class HerosAdapter(context: Context,
-                   list: List<String>) : RecyclerView.Adapter<HerosAdapter.MyViewHolder?>() {
+                   list: List<Hero>) : RecyclerView.Adapter<HerosAdapter.MyViewHolder?>() {
 
     var mContext =context
     var mList = list
@@ -60,13 +61,13 @@ class HerosAdapter(context: Context,
 
     inner class MyViewHolder(itemView:View):RecyclerView.ViewHolder(itemView){
 
-        //val ivEvent: ImageView
+        val ivHero: ImageView
         var tvTitle: TextView
 
         init {
             //itemView.setOnClickListener(this)
-            //ivEvent = itemView.iv_event
-            tvTitle = itemView.tv
+            ivHero = itemView.iv_hero
+            tvTitle = itemView.tv_hero_name
         }
 
          //clickListener de cada posicao do adapter
