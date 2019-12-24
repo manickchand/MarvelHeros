@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.manickchand.marvelheros.R
 import com.manickchand.marvelheros.data.model.hero.Hero
 import com.manickchand.marvelheros.data.util.CHARACTER_LIMIT
+import com.manickchand.marvelheros.details.DetailsActivity
 import kotlinx.android.synthetic.main.activity_heros.*
 
 class HerosActivity : AppCompatActivity() {
@@ -56,7 +57,9 @@ class HerosActivity : AppCompatActivity() {
             })
 
             adapter = HerosAdapter(this@HerosActivity, mList){ hero ->
-                Toast.makeText(this@HerosActivity,"Clicou", Toast.LENGTH_SHORT).show()
+                val intent = DetailsActivity.getStartIntent(this@HerosActivity, hero)
+                this@HerosActivity.startActivity(intent)
+                //Toast.makeText(this@HerosActivity,"Clicou", Toast.LENGTH_SHORT).show()
             }
 
         }
