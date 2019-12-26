@@ -17,12 +17,12 @@ import kotlinx.android.synthetic.main.activity_heros.*
 
 class HerosActivity : AppCompatActivity() {
 
-    private lateinit var viewModel:HerosViewModel
+    lateinit var viewModel:HerosViewModel
     var offset = 0
     private var loading = false
     var pastVisiblesItems = 0
     var totalItemCount:Int = 0
-    private var mList:MutableList<Hero> = ArrayList()
+    var mList:MutableList<Hero> = ArrayList()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
