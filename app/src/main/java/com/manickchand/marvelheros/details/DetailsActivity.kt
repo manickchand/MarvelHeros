@@ -20,7 +20,6 @@ class DetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
-        setSupportActionBar(toolbar)
 
         hero = intent.getParcelableExtra(EXTRA_HERO)
 
@@ -42,7 +41,6 @@ class DetailsActivity : AppCompatActivity() {
         with(rv_comics){
             layoutManager = LinearLayoutManager(this@DetailsActivity, RecyclerView.VERTICAL,false)
             setHasFixedSize(true)
-            isNestedScrollingEnabled = false
             adapter = DetailsAdapter(this@DetailsActivity, hero?.comics?.items!!)
         }
     }
