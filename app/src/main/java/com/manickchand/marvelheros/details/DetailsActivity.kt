@@ -5,6 +5,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.manickchand.marvelheros.R
 import com.manickchand.marvelheros.data.model.hero.Hero
 import com.manickchand.marvelheros.data.util.getUrlImage
@@ -28,7 +30,6 @@ class DetailsActivity : AppCompatActivity() {
             Toast.makeText(this, R.string.error_details, Toast.LENGTH_SHORT).show()
             finish()
         }
-
     }
 
     fun setData(){
@@ -37,6 +38,13 @@ class DetailsActivity : AppCompatActivity() {
 
         tv_name_detail.text = hero?.name
         tv_description_detail.text = hero?.description
+
+        with(rv_comics){
+            layoutManager = LinearLayoutManager(this@DetailsActivity, RecyclerView.VERTICAL,false)
+            setHasFixedSize(true)
+            isNestedScrollingEnabled = false
+            adapter = DetailsAdapter(this@DetailsActivity, hero?.comics?.items!!)
+        }
     }
 
     companion object {

@@ -13,7 +13,6 @@ import com.manickchand.marvelheros.R
 import com.manickchand.marvelheros.data.model.hero.Hero
 import com.manickchand.marvelheros.data.util.getUrlImage
 import com.manickchand.marvelheros.data.util.loadImageView
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_heros.view.*
 
 class HerosAdapter(context: Context,
