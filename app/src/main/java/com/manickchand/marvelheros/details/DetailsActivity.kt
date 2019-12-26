@@ -32,7 +32,7 @@ class DetailsActivity : AppCompatActivity() {
     }
 
     fun setData(){
-        val urlImg = getUrlImage(hero?.thumbnail!!.path, hero?.thumbnail!!.extension)
+        val urlImg = getUrlImage(hero?.thumbnail!!.path, hero?.thumbnail!!.extension,"landscape_xlarge")
         loadImageView(iv_hero_detail,urlImg)
 
         tv_name_detail.text = hero?.name

@@ -10,8 +10,8 @@ import java.math.BigInteger
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 
-fun getUrlImage(path:String, extension:String ):String{
-    return "$path/landscape_xlarge.$extension"
+fun getUrlImage(path:String, extension:String, type:String ):String{
+    return "$path/$type.$extension"
 }
 
 fun getHash(ts: String): String {
