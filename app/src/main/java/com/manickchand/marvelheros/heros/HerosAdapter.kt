@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.manickchand.marvelheros.R
 import com.manickchand.marvelheros.data.model.hero.Hero
 import com.manickchand.marvelheros.data.util.getUrlImage
+import com.manickchand.marvelheros.data.util.loadImageView
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_heros.view.*
 
@@ -57,10 +58,7 @@ class HerosAdapter(context: Context,
             val urlImg = getUrlImage(hero.thumbnail.path, hero.thumbnail.extension)
 
             try {
-                Picasso.get().load(urlImg)
-                    .placeholder(R.drawable.placeholder)
-                    .error(R.drawable.placeholder)
-                    .into(ivHero)
+                loadImageView(ivHero,urlImg)
             }catch (e:Exception){
                 e.stackTrace
             }

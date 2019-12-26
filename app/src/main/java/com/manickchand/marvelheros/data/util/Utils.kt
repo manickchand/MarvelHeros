@@ -3,6 +3,9 @@ package com.manickchand.marvelheros.data.util
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
+import android.widget.ImageView
+import com.manickchand.marvelheros.R
+import com.squareup.picasso.Picasso
 import java.math.BigInteger
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
@@ -50,4 +53,11 @@ fun hasInternet(context: Context?): Boolean {
         }
         return false
     }
+}
+
+fun loadImageView(image: ImageView, imageUrl: String?) {
+    Picasso.get().load(imageUrl)
+        .placeholder(R.drawable.placeholder)
+        .error(R.drawable.placeholder)
+        .into(image)
 }

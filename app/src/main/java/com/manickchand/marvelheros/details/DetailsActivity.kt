@@ -3,22 +3,40 @@ package com.manickchand.marvelheros.details
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.manickchand.marvelheros.R
 import com.manickchand.marvelheros.data.model.hero.Hero
+import com.manickchand.marvelheros.data.util.getUrlImage
+import com.manickchand.marvelheros.data.util.loadImageView
 import kotlinx.android.synthetic.main.activity_details.*
 
 class DetailsActivity : AppCompatActivity() {
+
+    private var hero:Hero? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
         setSupportActionBar(toolbar)
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+
+        hero = intent.getParcelableExtra(EXTRA_HERO)
+
+        if(hero!=null){
+            setData()
+        }else{
+            Toast.makeText(this, R.string.error_details, Toast.LENGTH_SHORT).show()
+            finish()
         }
+
+    }
+
+    fun setData(){
+        val urlImg = getUrlImage(hero?.thumbnail!!.path, hero?.thumbnail!!.extension)
+        loadImageView(iv_hero_detail,urlImg)
+
+        tv_name_detail.text = hero?.name
+        tv_description_detail.text = hero?.description
     }
 
     companion object {
