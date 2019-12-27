@@ -57,7 +57,7 @@ class HerosAdapter(context: Context,
 
         fun bindHero(hero: Hero) {
 
-            val urlImg = getUrlImage(hero.thumbnail!!.path, hero.thumbnail!!.extension, "portrait_medium")
+            val urlImg = getUrlImage(hero.thumbnail?.path ?: "", hero.thumbnail?.extension ?: "", "portrait_medium")
 
             try {
                 loadImageView(ivHero,urlImg)

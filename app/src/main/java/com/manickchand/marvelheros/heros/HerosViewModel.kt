@@ -33,7 +33,7 @@ class HerosViewModel:ViewModel() {
 
                 if(response.isSuccessful){
                     hasErrorLiveData.value = false
-                    val heros = response.body()!!.data.results
+                    val heros = response.body()?.data?.results ?: emptyList()
                     herosLiveData.value = heros
                 }else{
                     Log.e(TAG_DEBUC,"[Response getHeros dont successful] code: "+response.code())
