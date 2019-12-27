@@ -15,33 +15,41 @@ import kotlinx.android.synthetic.main.activity_details.*
 
 class DetailsActivity : AppCompatActivity() {
 
-    private var hero:Hero? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
 
-        hero = intent.getParcelableExtra(EXTRA_HERO)
+        val hero:Hero? = intent.getParcelableExtra(EXTRA_HERO) ?: return
+        receiveHero(hero)
+    }
 
+    fun receiveHero(hero:Hero?){
         if(hero!=null){
-            setData()
+            setData(hero)
         }else{
             Toast.makeText(this, R.string.error_details, Toast.LENGTH_SHORT).show()
             finish()
         }
     }
 
-    fun setData(){
-        val urlImg = getUrlImage(hero?.thumbnail!!.path, hero?.thumbnail!!.extension,"landscape_xlarge")
-        loadImageView(iv_hero_detail,urlImg)
+    fun setData(hero:Hero){
+        val urlImg = getUrlImage(hero?.thumbnail?.path ?: "", hero?.thumbnail?.extension ?: "","landscape_xlarge")
+
+        try {
+            loadImageView(iv_hero_detail,urlImg)
+        }catch (e:Exception){
+            e.printStackTrace()
+        }
 
         tv_name_detail.text = hero?.name
         tv_description_detail.text = hero?.description
 
-        with(rv_comics){
-            layoutManager = LinearLayoutManager(this@DetailsActivity, RecyclerView.VERTICAL,false)
-            setHasFixedSize(true)
-            adapter = DetailsAdapter(this@DetailsActivity, hero?.comics?.items!!)
+        if ((hero.comics?.items ?: emptyList()).isNotEmpty()){
+            with(rv_comics){
+                layoutManager = LinearLayoutManager(this@DetailsActivity, RecyclerView.VERTICAL,false)
+                setHasFixedSize(true)
+                adapter = DetailsAdapter(this@DetailsActivity, hero.comics?.items!!)
+            }
         }
     }
 
