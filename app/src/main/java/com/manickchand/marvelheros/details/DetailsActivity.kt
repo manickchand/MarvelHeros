@@ -32,8 +32,8 @@ class DetailsActivity : AppCompatActivity() {
         }
     }
 
-    fun setData(hero:Hero){
-        val urlImg = getUrlImage(hero?.thumbnail?.path ?: "", hero?.thumbnail?.extension ?: "","landscape_xlarge")
+    private fun setData(hero:Hero){
+        val urlImg = getUrlImage(hero.thumbnail?.path ?: "", hero.thumbnail?.extension ?: "","landscape_xlarge")
 
         try {
             loadImageView(iv_hero_detail,urlImg)
@@ -41,8 +41,8 @@ class DetailsActivity : AppCompatActivity() {
             e.printStackTrace()
         }
 
-        tv_name_detail.text = hero?.name
-        tv_description_detail.text = hero?.description
+        tv_name_detail.text = hero.name
+        tv_description_detail.text = hero.description
 
         if ((hero.comics?.items ?: emptyList()).isNotEmpty()){
             with(rv_comics){
