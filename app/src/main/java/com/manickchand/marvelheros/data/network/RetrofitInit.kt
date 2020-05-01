@@ -7,12 +7,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitInit {
 
-    private fun initRetrofit(): Retrofit {
-        return Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-    }
+//    private fun initRetrofit(): Retrofit {
+//        return Retrofit.Builder()
+//            .baseUrl(BASE_URL)
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .build()
+//    }
 
-    val service: IServiceRetrofit = initRetrofit().create(IServiceRetrofit::class.java)
+    //val service: IServiceRetrofit = initRetrofit().create(IServiceRetrofit::class.java)
 }

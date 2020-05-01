@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.manickchand.marvelheros.data.model.hero.CharacterReturn
 import com.manickchand.marvelheros.data.model.hero.Hero
+import com.manickchand.marvelheros.data.network.IServiceRetrofit
 import com.manickchand.marvelheros.data.network.RetrofitInit
 import com.manickchand.marvelheros.data.util.API_PUBLIC_KEY
 import com.manickchand.marvelheros.data.util.CHARACTER_LIMIT
@@ -14,15 +15,15 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class HerosViewModel:ViewModel() {
+class HerosViewModel(private val iServiceRetrofit: IServiceRetrofit):ViewModel() {
+
     val herosLiveData: MutableLiveData<List<Hero>> = MutableLiveData()
     val hasErrorLiveData: MutableLiveData<Boolean> = MutableLiveData()
 
     fun getHeros(offset:Int){
 
-        Log.i(TAG_DEBUC, "hash ts : ${ts}")
-
-        RetrofitInit.service.getAllEvents(CHARACTER_LIMIT,
+        this.iServiceRetrofit.getAllEvents(
+            CHARACTER_LIMIT,
             offset,
             ts,
             API_PUBLIC_KEY,
