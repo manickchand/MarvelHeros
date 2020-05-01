@@ -51,11 +51,10 @@ class HerosAdapter(context: Context,
 
         private var ivHero: ImageView = itemView.iv_hero
         private var tvTitle: TextView = itemView.tv_hero_name
-        private var tvComics: TextView = itemView.tv_comics
 
         fun bindHero(hero: Hero) {
 
-            val urlImg = getUrlImage(hero.thumbnail?.path ?: "", hero.thumbnail?.extension ?: "", "portrait_medium")
+            val urlImg = getUrlImage(hero.thumbnail?.path ?: "", hero.thumbnail?.extension ?: "", "portrait_uncanny")
 
             try {
                 loadImageView(ivHero,urlImg)
@@ -63,7 +62,6 @@ class HerosAdapter(context: Context,
                 e.stackTrace
             }
             tvTitle.text = hero.name
-            tvComics.text = "Comics: "+ hero.comics?.items?.size
 
             itemView.setOnClickListener{
                 onItemClickListener.invoke(hero)

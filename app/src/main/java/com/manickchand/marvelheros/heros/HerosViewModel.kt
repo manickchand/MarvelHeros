@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import com.manickchand.marvelheros.data.model.hero.CharacterReturn
 import com.manickchand.marvelheros.data.model.hero.Hero
 import com.manickchand.marvelheros.data.network.IServiceRetrofit
-import com.manickchand.marvelheros.data.network.RetrofitInit
 import com.manickchand.marvelheros.data.util.API_PUBLIC_KEY
 import com.manickchand.marvelheros.data.util.CHARACTER_LIMIT
 import com.manickchand.marvelheros.data.util.TAG_DEBUC

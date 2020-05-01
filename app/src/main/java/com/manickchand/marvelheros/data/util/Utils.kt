@@ -17,9 +17,10 @@ fun getUrlImage(path:String, extension:String, type:String ):String{
 fun getHash(ts: String): String {
     try {
 
-        val md = MessageDigest.getInstance("MD5")
+        val md = MessageDigest.getInstance(MD5)
 
-        val messageDigest = md.digest(ts.toByteArray()
+        val messageDigest = md.digest(
+            ts.toByteArray()
                 + API_PRIVATE_KEY.toByteArray()
                 + API_PUBLIC_KEY.toByteArray())
 

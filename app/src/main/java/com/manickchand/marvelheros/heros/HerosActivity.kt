@@ -41,16 +41,16 @@ class HerosActivity : AppCompatActivity() {
         })
 
         viewModel.hasErrorLiveData.observe(this, Observer {error ->
-            swiperefresh.isRefreshing = false
-            changeLayout(error)
+//            swiperefresh.isRefreshing = false
+            //changeLayout(error)
         })
 
         btn_try_again.setOnClickListener { checkConnection()}
 
-        swiperefresh.setColorSchemeResources(R.color.colorAccent)
-        swiperefresh.setOnRefreshListener{
-            this.checkConnection()
-        }
+//        swiperefresh.setColorSchemeResources(R.color.colorAccent)
+//        swiperefresh.setOnRefreshListener{
+//            this.checkConnection()
+//        }
 
         checkConnection()
     }
@@ -59,7 +59,7 @@ class HerosActivity : AppCompatActivity() {
 
         with(rv_heros){
 
-            layoutManager = LinearLayoutManager(this@HerosActivity, RecyclerView.VERTICAL,false)
+            layoutManager = LinearLayoutManager(this@HerosActivity, RecyclerView.HORIZONTAL,false)
             setHasFixedSize(true)
 
             addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -92,22 +92,22 @@ class HerosActivity : AppCompatActivity() {
 
     fun checkConnection(){
         if(hasInternet(this)){
-            swiperefresh.isRefreshing = true
+//            swiperefresh.isRefreshing = true
             viewModel.getHeros(offset)
-            changeLayout(false)
+            //changeLayout(false)
         }else{
-            changeLayout(true)
+            //changeLayout(true)
         }
     }
 
-    fun changeLayout(error: Boolean) {
-        if(error){
-            swiperefresh.visibility = View.GONE
-            ll_error.visibility = View.VISIBLE
-        }
-        else{
-            swiperefresh.visibility = View.VISIBLE
-            ll_error.visibility = View.GONE
-        }
-    }
+//    fun changeLayout(error: Boolean) {
+//        if(error){
+//            swiperefresh.visibility = View.GONE
+//            ll_error.visibility = View.VISIBLE
+//        }
+//        else{
+//            swiperefresh.visibility = View.VISIBLE
+//            ll_error.visibility = View.GONE
+//        }
+//    }
 }

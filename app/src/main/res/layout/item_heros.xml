@@ -1,22 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="4dp"
-    android:elevation="5dp"
-    android:layout_margin="8dp"
-    app:cardBackgroundColor="@color/colorAccent"
-    app:contentPadding="4dp">
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:id="@+id/cl_hero"
+    android:layout_width="@dimen/width_character"
+    android:layout_height="@dimen/heigth_character"
+    android:layout_gravity="left|bottom"
+    android:layout_marginLeft="4dp"
+    android:layout_marginBottom="16dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:elevation="8dp"
+        card_view:cardElevation="8dp"
+        app:cardCornerRadius="12dp"
+        android:layout_margin="8dp"
+        >
 
         <ImageView
             android:id="@+id/iv_hero"
-            android:layout_width="100dp"
-            android:layout_height="150dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:adjustViewBounds="true"
             android:scaleType="fitXY"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -26,29 +34,17 @@
 
         <TextView
             android:id="@+id/tv_hero_name"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="#66000000"
             android:padding="16dp"
-            android:text="NOME"
-            android:textColor="@color/colorPrimary"
+            android:text="CHARACTER NAME"
+            android:textColor="@color/colorWhite"
             android:textSize="24sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/iv_hero" />
+            />
 
-        <TextView
-            android:id="@+id/tv_comics"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="Comics"
-            android:textColor="#fff"
-            android:textSize="18sp"
-            app:layout_constraintTop_toBottomOf="@id/tv_hero_name"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/iv_hero" />
+    </androidx.cardview.widget.CardView>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

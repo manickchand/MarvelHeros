@@ -6,4 +6,6 @@
     <dimen name="about_img">150dp</dimen>
     <dimen name="margin_default">16dp</dimen>
     <dimen name="main_error_img">128dp</dimen>
+    <dimen name="heigth_character">560dp</dimen>
+    <dimen name="width_character">380dp</dimen>
 </resources>
