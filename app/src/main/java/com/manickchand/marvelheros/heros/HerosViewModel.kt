@@ -20,7 +20,14 @@ class HerosViewModel:ViewModel() {
 
     fun getHeros(offset:Int){
 
-        RetrofitInit.service.getAllEvents(CHARACTER_LIMIT, offset, ts, API_PUBLIC_KEY, getHash(ts.toString())).enqueue(object: Callback<CharacterReturn>{
+        Log.i(TAG_DEBUC, "hash ts : ${ts}")
+
+        RetrofitInit.service.getAllEvents(CHARACTER_LIMIT,
+            offset,
+            ts,
+            API_PUBLIC_KEY,
+            getHash(ts.toString())
+        ).enqueue(object: Callback<CharacterReturn>{
 
             override fun onFailure(call: Call<CharacterReturn>, t: Throwable) {
                 Log.e(TAG_DEBUC,"[Error getHeros] "+t.message)

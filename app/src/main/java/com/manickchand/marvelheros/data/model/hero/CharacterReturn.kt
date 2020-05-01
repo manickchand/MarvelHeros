@@ -6,9 +6,6 @@ import kotlinx.android.parcel.Parcelize
 data class CharacterReturn (
     var code:Int,
     var status:String,
-    var copyright:String,
-    var attributionText:String,
-    var attributionHTML:String,
     var etag:String,
     var data:DataReturn
 )
@@ -41,57 +38,4 @@ data class Comics (
 data class ItemComics (
     var resourceURI:String? = "",
     var name:String? = ""
-):Parcelable
-
-//----------------------------------------------------
-@Parcelize
-data class Series (
-    var available:Int,
-    var collectionURI:String,
-    var items:List<ItemSeries>,
-    var returned:Int
-):Parcelable
-
-@Parcelize
-data class ItemSeries (
-    var resourceURI:String,
-    var name:String?
-):Parcelable
-
-// -------------------------------------------------
-@Parcelize
-data class Stories (
-    var available:Int,
-    var collectionURI:String,
-    var items:List<ItemStories>,
-    var returned:Int
-):Parcelable
-
-@Parcelize
-data class ItemStories (
-    var resourceURI:String,
-    var name:String,
-    var type:String
-):Parcelable
-
-//-----------------------------------------------------
-@Parcelize
-data class Events (
-    var available:Int,
-    var collectionURI:String,
-    var items:List<ItemEvents>,
-    var returned:Int
-):Parcelable
-
-@Parcelize
-data class ItemEvents (
-    var resourceURI:String,
-    var name:String
-):Parcelable
-
-//------------------------------------------------------
-@Parcelize
-data class ItemUrls (
-    var type:String,
-    var url:String
 ):Parcelable

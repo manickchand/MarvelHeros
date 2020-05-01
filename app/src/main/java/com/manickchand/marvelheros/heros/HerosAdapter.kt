@@ -52,8 +52,6 @@ class HerosAdapter(context: Context,
         private var ivHero: ImageView = itemView.iv_hero
         private var tvTitle: TextView = itemView.tv_hero_name
         private var tvComics: TextView = itemView.tv_comics
-        private var tvStories: TextView = itemView.tv_stories
-        private var tvSeries: TextView = itemView.tv_series
 
         fun bindHero(hero: Hero) {
 
@@ -65,9 +63,7 @@ class HerosAdapter(context: Context,
                 e.stackTrace
             }
             tvTitle.text = hero.name
-            tvSeries.text = "Series: "+ hero.series?.items?.size
             tvComics.text = "Comics: "+ hero.comics?.items?.size
-            tvStories.text = "Stories: "+ hero.stories?.items?.size
 
             itemView.setOnClickListener{
                 onItemClickListener.invoke(hero)
