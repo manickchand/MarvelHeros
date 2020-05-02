@@ -38,7 +38,7 @@ class HerosAdapter(context: Context,
     private fun setAnimation(viewToAnimate: View, position: Int) {
         if (position > lastPosition) {
             val animation: Animation =
-                AnimationUtils.loadAnimation(mContext, android.R.anim.slide_in_left)
+                AnimationUtils.loadAnimation(mContext, android.R.anim.fade_in)
             viewToAnimate.startAnimation(animation)
             lastPosition = position
         }
