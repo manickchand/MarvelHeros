@@ -52,6 +52,7 @@ class HerosActivity : AppCompatActivity() {
                 val intent = DetailsActivity.getStartIntent(this@HerosActivity, hero)
                 this@HerosActivity.startActivity(intent)
             }
+
         }
     }
 

@@ -31,6 +31,7 @@ class HerosAdapter(context: Context,
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+
         holder.bindHero(mList[position])
         setAnimation(holder.itemView, position)
     }
@@ -61,6 +62,7 @@ class HerosAdapter(context: Context,
             }catch (e:Exception){
                 e.stackTrace
             }
+
             tvTitle.text = hero.name
 
             itemView.setOnClickListener{

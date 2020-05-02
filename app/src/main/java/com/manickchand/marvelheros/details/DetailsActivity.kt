@@ -33,7 +33,7 @@ class DetailsActivity : AppCompatActivity() {
     }
 
     private fun setData(hero:Hero){
-        val urlImg = getUrlImage(hero.thumbnail?.path ?: "", hero.thumbnail?.extension ?: "","landscape_xlarge")
+        val urlImg = getUrlImage(hero.thumbnail?.path ?: "", hero.thumbnail?.extension ?: "","standard_fantastic")
 
         try {
             loadImageView(iv_hero_detail,urlImg)
@@ -41,15 +41,15 @@ class DetailsActivity : AppCompatActivity() {
             e.printStackTrace()
         }
 
-        tv_name_detail.text = hero.name
-        tv_description_detail.text = hero.description
+//        tv_name_detail.text = hero.name
+//        tv_description_detail.text = hero.description
 
         if ((hero.comics?.items ?: emptyList()).isNotEmpty()){
-            with(rv_comics){
-                layoutManager = LinearLayoutManager(this@DetailsActivity, RecyclerView.VERTICAL,false)
-                setHasFixedSize(true)
-                adapter = DetailsAdapter(this@DetailsActivity, hero.comics?.items!!)
-            }
+//            with(rv_comics){
+//                layoutManager = LinearLayoutManager(this@DetailsActivity, RecyclerView.VERTICAL,false)
+//                setHasFixedSize(true)
+//                adapter = DetailsAdapter(this@DetailsActivity, hero.comics?.items!!)
+//            }
         }
     }
 

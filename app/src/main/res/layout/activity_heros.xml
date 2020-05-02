@@ -30,11 +30,14 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_heros"
+        android:orientation="horizontal"
+        android:focusable="true"
         android:layout_width="match_parent"
         android:layout_height="@dimen/heigth_character"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:listitem="@layout/item_heros"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
